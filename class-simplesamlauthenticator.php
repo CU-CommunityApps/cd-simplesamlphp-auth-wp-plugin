@@ -135,7 +135,7 @@ if ( ! class_exists( 'SimpleSAMLAuthenticator' ) ) {
 						$user = get_user_by( 'email', $user_email );
 					}
 				} else {
-					$this->display_invalid_user_message();
+					$this->display_invalid_user_message( $user_email );
 				}
 			}
 		}
@@ -199,9 +199,10 @@ EOD;
 		/**
 		 * Shows a invalid user message.
 		 *
+		 * @param string $user_email The auth user email.
 		 * @return void
 		 */
-		private function display_invalid_user_message() {
+		private function display_invalid_user_message( $user_email ) {
 			$admin_email = get_option( 'admin_email' );
 			$error = <<<EOD
 <p style="max-width:320px; margin:auto; padding-top:50px;"><strong>Invalid</strong>: $user_email is not a registered user.
