@@ -103,7 +103,6 @@ if ( ! class_exists( 'SimpleSAMLAuthenticator' ) ) {
 			$username = $this->get_username( $simplesaml_authentication_opt, $attributes );
 			$user_email = $this->get_email( $simplesaml_authentication_opt, $attributes, $username );
 			$this->validate_email( $user_email );
-			write_log( $user_email );
 			$user = get_user_by( 'email', $user_email );
 
 			if ( $user ) {
