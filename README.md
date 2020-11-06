@@ -1,0 +1,1 @@
+# cd-simplesamlphp-auth-wp-plugin
