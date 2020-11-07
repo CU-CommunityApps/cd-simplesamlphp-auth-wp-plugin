@@ -75,9 +75,7 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin {
 		$this->plugin_name = 'cd-simplesamlphp-auth-wp-plugin';
 
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
 
 	}
 
@@ -87,7 +85,6 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Cd_Simplesamlphp_Auth_Wp_Plugin_Loader. Orchestrates the hooks of the plugin.
-	 * - Cd_Simplesamlphp_Auth_Wp_Plugin_i18n. Defines internationalization functionality.
 	 * - Cd_Simplesamlphp_Auth_Wp_Plugin_Admin. Defines all hooks for the admin area.
 	 * - Cd_Simplesamlphp_Auth_Wp_Plugin_Public. Defines all hooks for the public side of the site.
 	 *
@@ -106,40 +103,11 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cd-simplesamlphp-auth-wp-plugin-loader.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-cd-simplesamlphp-auth-wp-plugin-i18n.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-cd-simplesamlphp-auth-wp-plugin-admin.php';
 
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-cd-simplesamlphp-auth-wp-plugin-public.php';
-
 		$this->loader = new Cd_Simplesamlphp_Auth_Wp_Plugin_Loader();
-
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Cd_Simplesamlphp_Auth_Wp_Plugin_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new Cd_Simplesamlphp_Auth_Wp_Plugin_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 
@@ -154,11 +122,9 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin {
 
 		$plugin_admin = new Cd_Simplesamlphp_Auth_Wp_Plugin_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		// Displays settings in admin menu.
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_options_page', 9 );
-		// Database settings used by plugin.
+		// @todo extract database to its own function. Database settings used by plugin.
 		// $this->loader->add_action( 'admin_init', $plugin_admin, 'register_and_build_fields' );
 
 		$this->loader->add_filter( 'authenticate', $plugin_admin, 'authenticate', 10, 2 );
@@ -167,22 +133,6 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin {
 		$this->loader->add_action( 'retrieve_password', $plugin_admin, 'disable_function' );
 		$this->loader->add_action( 'password_reset', $plugin_admin, 'disable_function' );
 		$this->loader->add_filter( 'show_password_fields', $plugin_admin, 'show_password_fields' );
-
-	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new Cd_Simplesamlphp_Auth_Wp_Plugin_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}
 
