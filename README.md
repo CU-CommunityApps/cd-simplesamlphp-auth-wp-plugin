@@ -50,7 +50,7 @@ cp -r ./private/simplesaml/config ./private/simplesamlphp/config
 cp -r ./private/simplesaml/metadata ./private/simplesamlphp/metadata
 ```
 
-## Clean up and remove the downloaded files
+### Clean up and remove the downloaded files
 
 ```bash
 rm main.zip
