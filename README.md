@@ -63,3 +63,26 @@ rm simplesamlphp-latest.tar.gz
 - settings can be configured under settings -> [Simplesamlphp auth](/wp-admin/options-general.php?page=cd-simplesamlphp-auth-wp-plugin)
 
 - Logout and then Log into site and should be redirected to simplesamlphp auth.
+
+## To apply updates to simplesamlphp
+
+```bash
+rm - r private/simplesamlphp
+rm - r simplesaml
+
+wget https://simplesamlphp.org/download?latest -O simplesamlphp-latest.tar.gz
+mkdir -p private/simplesamlphp
+tar -zxf simplesamlphp-latest.tar.gz -C private/simplesamlphp --strip-components 1
+ln -s private/simplesamlphp/www simplesaml
+
+rm -r private/simplesamlphp/cert
+cp -r private/simplesaml/cert private/simplesamlphp/cert
+
+rm -r private/simplesamlphp/config
+rm -r private/simplesamlphp/metadata
+cp -r ./private/simplesaml/config ./private/simplesamlphp/config
+cp -r ./private/simplesaml/metadata ./private/simplesamlphp/metadata
+
+#clean up
+rm simplesamlphp-la
+```
