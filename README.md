@@ -57,8 +57,8 @@ rm main.zip
 rm simplesamlphp-latest.tar.gz
 ```
 
-- Login into the website and activate the plugin.
-![image](https://user-images.githubusercontent.com/4685094/98468714-c4ceaa00-21a9-11eb-9d46-ddc9e057b275.png)
+- Login into the website and activate the plugin.<br/>
+    ![image](https://user-images.githubusercontent.com/4685094/98468714-c4ceaa00-21a9-11eb-9d46-ddc9e057b275.png)
 
 - settings can be configured under settings -> [Simplesamlphp auth](/wp-admin/options-general.php?page=cd-simplesamlphp-auth-wp-plugin)
 
