@@ -53,6 +53,6 @@ cp -r ./private/simplesaml/metadata ./private/simplesamlphp/metadata
 - Login into the website and activate the plugin.
 ![image](https://user-images.githubusercontent.com/4685094/98468714-c4ceaa00-21a9-11eb-9d46-ddc9e057b275.png)
 
-- settings can be configured under settings -> (Simplesamlphp auth)[/wp-admin/options-general.php?page=cd-simplesamlphp-auth-wp-plugin]
+- settings can be configured under settings -> [Simplesamlphp auth](/wp-admin/options-general.php?page=cd-simplesamlphp-auth-wp-plugin)
 
 - Log into site and should be redirected to simplesamlphp auth.
