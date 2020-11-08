@@ -30,7 +30,7 @@ cp -r wp-content/plugins/cd-simplesamlphp-auth-wp-plugin/docs/config private/sim
 cp -r wp-content/plugins/cd-simplesamlphp-auth-wp-plugin/docs/metadata private/simplesaml
 ```
 
-### [Generate certs](https://simplesamlphp.org/docs/stable/simplesamlphp-sp#section_1_1) as needed, and add them to the repository in `private/simplesamlphp/cert`.
+### [Generate certs](https://simplesamlphp.org/docs/stable/simplesamlphp-sp#section_1_1) as needed, and add them to `private/simplesamlphp/cert`.
 
 ```bash
 mkdir private/simplesaml/cert
