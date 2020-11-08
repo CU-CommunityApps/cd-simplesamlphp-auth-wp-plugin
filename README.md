@@ -62,4 +62,4 @@ rm simplesamlphp-latest.tar.gz
 
 - settings can be configured under settings -> [Simplesamlphp auth](/wp-admin/options-general.php?page=cd-simplesamlphp-auth-wp-plugin)
 
-- Log into site and should be redirected to simplesamlphp auth.
+- Logout and then Log into site and should be redirected to simplesamlphp auth.
