@@ -50,6 +50,13 @@ cp -r ./private/simplesaml/config ./private/simplesamlphp/config
 cp -r ./private/simplesaml/metadata ./private/simplesamlphp/metadata
 ```
 
+## Clean up and remove the downloaded files
+
+```bash
+rm main.zip
+rm simplesamlphp-latest.tar.gz
+```
+
 - Login into the website and activate the plugin.
 ![image](https://user-images.githubusercontent.com/4685094/98468714-c4ceaa00-21a9-11eb-9d46-ddc9e057b275.png)
 
