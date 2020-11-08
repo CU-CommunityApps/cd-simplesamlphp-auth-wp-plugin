@@ -1,7 +1,7 @@
 <?php
 /**
  * The admin-specific functionality of the plugin.
- * User authentication via simplesamlphp. Some of this code could be extracted.
+ * User authentication via simplesamlphp. Some of this code could be refactored.
  *
  * @link       https://github.com/philwilliammee
  * @since      1.0.0
@@ -367,50 +367,56 @@ if ( $options['slo'] && ! function_exists( 'is_user_logged_in' ) ) {
 	}
 }
 
-/**
- * Allowed html elements.
- *
- * @return array
- */
-function allowed_html() {
-	$allowed_html = [
-		'div' => [],
-		'p' => [
-			'class' => true,
-			'style' => [
-				'max-width' => true,
-				'margin' => true,
-				'padding' => true,
-			],
-		],
-		'a' => [
-			'href' => true,
-			'title' => true,
-			'class' => true,
-		],
-		'span' => [
-			'class' => true,
-		],
-		'b' => [],
-		'em' => [],
-		'i' => [],
-		'strong' => [],
 
-	];
-	return $allowed_html;
+if ( ! function_exists( 'allowed_html' ) ) {
+	/**
+	 * Allowed html elements.
+	 *
+	 * @return array
+	 */
+	function allowed_html() {
+		$allowed_html = [
+			'div' => [],
+			'p' => [
+				'class' => true,
+				'style' => [
+					'max-width' => true,
+					'margin' => true,
+					'padding' => true,
+				],
+			],
+			'a' => [
+				'href' => true,
+				'title' => true,
+				'class' => true,
+			],
+			'span' => [
+				'class' => true,
+			],
+			'b' => [],
+			'em' => [],
+			'i' => [],
+			'strong' => [],
+
+		];
+		return $allowed_html;
+	}
 }
 
 
-/**
- * Helper function for debugging.
- *
- * @param mixed $log The content to log.
- */
-function write_log( $log ) {
-	if ( is_array( $log ) || is_object( $log ) ) {
-		$log = wp_json_encode( $log );
-	}
-	if ( true === WP_DEBUG ) {
-		error_log( $log );
+
+if ( ! function_exists( 'write_log' ) ) {
+	/**
+	 * Helper function for debugging.
+	 *
+	 * @param mixed $log The content to log.
+	 */
+	function write_log( $log ) {
+		if ( is_array( $log ) || is_object( $log ) ) {
+			$log = wp_json_encode( $log );
+		}
+		if ( true === WP_DEBUG ) {
+			error_log( $log );
+		}
 	}
 }
