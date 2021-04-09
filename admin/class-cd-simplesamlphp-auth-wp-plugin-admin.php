@@ -150,6 +150,7 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin_Admin {
 		$user_email = '';
 
 		$site_url = get_site_url();
+
 		// Don't redirect to wp-login.php. adds relay state to login.
 		$this->auth->requireAuth(
 			[
@@ -175,11 +176,9 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin_Admin {
 			// Add them to the database.
 			// User must have an e-mail address to register.
 			if ( 1 == $this->options['new_user'] ) {
-				// Load Password Hasher.
-				require_once( ABSPATH . 'wp-includes/class-phpass.php' );
 				$user_info = [
 					'user_login' => $username,
-					'user_pass' => new PasswordHash( 8, true ),
+					'user_pass' => rand_string( 8 ),
 					'user_email' => $user_email,
 					'first_name' => $this->get_first_name( $this->options, $attributes ),
 					'last_name' => $this->get_last_name( $this->options, $attributes ),
@@ -191,6 +190,8 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin_Admin {
 				// @todo handle  wp_insert_user errors.
 				if ( is_numeric( $wp_uid ) ) {
 					$user = get_user_by( 'email', $user_email );
+					$user->set_role( $this->options['default_role'] );
+					return $user;
 				}
 			} else {
 				$this->display_invalid_user_message( $user_email );
@@ -401,6 +402,17 @@ if ( ! function_exists( 'allowed_html' ) ) {
 		];
 		return $allowed_html;
 	}
+}
+
+/**
+ * Generates a random string
+ *
+ * @param [type] $length The length of the password.
+ * @return string
+ */
+function rand_string( $length ) {
+	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	return substr( str_shuffle( $chars ), 0, $length );
 }
 
 
