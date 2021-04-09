@@ -190,8 +190,9 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin_Admin {
 				// @todo handle  wp_insert_user errors.
 				if ( is_numeric( $wp_uid ) ) {
 					$user = get_user_by( 'email', $user_email );
+					$user->set_role( $this->options['default_role'] );
+					return $user;
 				}
-				return $user;
 			} else {
 				$this->display_invalid_user_message( $user_email );
 			}

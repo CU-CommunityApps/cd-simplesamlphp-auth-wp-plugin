@@ -31,7 +31,7 @@ $options = [
 	'email_attribute' => 'mail',
 	'include_path' => 'private/simplesamlphp',
 	'admin_entitlement' => '',
-	'default_role' => 'author',
+	'default_role' => 'subscriber',
 ];
 
 if ( isset( $_POST['submit'] ) ) {
