@@ -1,6 +1,6 @@
 # cd-simplesamlphp-auth-wp-plugin
 
-tested with WordPress -v 5.5.3, simplesamlphp -v 1.19.0
+tested with WordPress -v 5.5.3, simplesamlphp -v 1.19.0, configured for use on <b>Pantheon</b> servers only
 >Logs a user into WordPress using simplesamlphp
 
 This plugin uses add_filter to modify the authentication function and uses simplesamlphp, instead of login form credentials.
@@ -88,3 +88,5 @@ cp -r ./private/simplesaml/metadata ./private/simplesamlphp/metadata
 #clean up
 rm simplesamlphp-la
 ```
+
+register your meta data with Cornell IDM [https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page](https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page)
