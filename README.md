@@ -89,4 +89,8 @@ cp -r ./private/simplesaml/metadata ./private/simplesamlphp/metadata
 rm simplesamlphp-la
 ```
 
+## Go Live
+
 register your meta data with Cornell IDM [https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page](https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page)
+
+Then enable the module on production.
