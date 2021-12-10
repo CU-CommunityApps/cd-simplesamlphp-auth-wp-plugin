@@ -96,3 +96,6 @@ register your meta data with Cornell IDM [https://confluence.cornell.edu/display
 Then enable the module on production.
 
 ## Sites using this plugin.
+
+- [Engaged Cornell](https://oei.cornell.edu/)
+- [The Intergroup Dialogue Project (IDP)](https://idp.cornell.edu/)
