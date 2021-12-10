@@ -94,3 +94,5 @@ rm simplesamlphp-la
 register your meta data with Cornell IDM [https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page](https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page)
 
 Then enable the module on production.
+
+## Sites using this plugin.
