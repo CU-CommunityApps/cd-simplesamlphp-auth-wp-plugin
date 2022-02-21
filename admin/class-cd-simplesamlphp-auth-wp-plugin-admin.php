@@ -154,7 +154,7 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin_Admin {
 		// Don't redirect to wp-login.php. adds relay state to login.
 		$this->auth->requireAuth(
 			[
-				'ReturnTo' => "$site_url/login/",
+				'ReturnTo' => $site_url . $_SERVER["REQUEST_URI"],
 				'KeepPost' => false,
 			]
 		);
