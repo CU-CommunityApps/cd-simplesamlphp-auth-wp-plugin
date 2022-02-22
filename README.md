@@ -100,4 +100,3 @@ Then enable the module on production.
 - [Engaged Cornell](https://oei.cornell.edu/)
 - [The Intergroup Dialogue Project (IDP)](https://idp.cornell.edu/)
 - [Cornell University Graduate School](https://gradschool.cornell.edu/)
-- [Cornell Grad School]( https://gradschool.cornell.edu/)
