@@ -30,12 +30,12 @@ cp -r wp-content/plugins/cd-simplesamlphp-auth-wp-plugin/docs/config private/sim
 cp -r wp-content/plugins/cd-simplesamlphp-auth-wp-plugin/docs/metadata private/simplesaml
 ```
 
-### [Generate certs](https://simplesamlphp.org/docs/stable/simplesamlphp-sp#section_1_1) as needed, and add them to `private/simplesamlphp/cert`.
+### [Generate certs](https://simplesamlphp.org/docs/stable/simplesamlphp-sp#section_1_1) and add them to `private/simplesamlphp/cert`.
 
 ```bash
 mkdir private/simplesaml/cert
 cd private/simplesaml/cert
-# openssl req -newkey rsa:2048 -new -x509 -days 3652 -nodes -out saml.crt -keyout saml.pem
+openssl req -newkey rsa:2048 -new -x509 -days 3652 -nodes -out saml.crt -keyout saml.pem
 cd ../../../
 rm -r private/simplesamlphp/cert
 cp -r private/simplesaml/cert private/simplesamlphp/cert
@@ -91,12 +91,17 @@ rm simplesamlphp-la
 
 ## Go Live
 
-register your meta data with Cornell IDM [https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page](https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page)
+- Make sure your certs are on the live site, by going to SITE_URL/simplesaml/module.php/saml/sp/metadata.php/cornell?output=xhtml and verify the metadata matches the saml.cert file.
 
-Then enable the module on production.
+- register your saml.cert metadata with Cornell IDM [https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page](https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page)
+
+- Test authentication sources before enabling the plugin by going to SITE_URL/simplesaml/module.php/core/authenticate.php?as=cornell
+
+- If you can login successfully using Test authentication cornell source then you can enable the plugin on the live site.
 
 ## Sites using this plugin.
 
 - [Engaged Cornell](https://oei.cornell.edu/)
 - [The Intergroup Dialogue Project (IDP)](https://idp.cornell.edu/)
 - [Cornell University Graduate School](https://gradschool.cornell.edu/)
+- [Cornell University Graduate School Intranet](https://intranet.gradschool.cornell.edu/)
