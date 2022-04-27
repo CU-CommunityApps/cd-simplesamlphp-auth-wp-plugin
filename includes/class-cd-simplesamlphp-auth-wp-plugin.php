@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -126,14 +125,12 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin {
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_options_page', 9 );
 		// @todo extract database to its own function. Database settings used by plugin.
 		// $this->loader->add_action( 'admin_init', $plugin_admin, 'register_and_build_fields' );
-
 		$this->loader->add_filter( 'authenticate', $plugin_admin, 'authenticate', 10, 2 );
 		$this->loader->add_action( 'wp_logout', $plugin_admin, 'logout' );
 		$this->loader->add_action( 'lost_password', $plugin_admin, 'disable_function' );
 		$this->loader->add_action( 'retrieve_password', $plugin_admin, 'disable_function' );
 		$this->loader->add_action( 'password_reset', $plugin_admin, 'disable_function' );
 		$this->loader->add_filter( 'show_password_fields', $plugin_admin, 'show_password_fields' );
-
 	}
 
 	/**

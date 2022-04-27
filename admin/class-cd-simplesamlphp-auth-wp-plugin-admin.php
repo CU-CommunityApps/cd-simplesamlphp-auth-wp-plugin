@@ -149,12 +149,23 @@ class Cd_Simplesamlphp_Auth_Wp_Plugin_Admin {
 		// Reset value from input ($_POST and $_COOKIE).
 		$user_email = '';
 
+		// Attempt to fix redirect to wp-login after saml login is successful.
+		// and still allow redirects to other pages.
 		$site_url = get_site_url();
+		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+			$request_uri = esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+		} else {
+			$request_uri = '';
+		}
+		$return_to = $site_url . $request_uri;
+		if ( strpos( $request_uri, 'wp-login.php?redirect_to=' ) !== false ) {
+			// if has a redirect url, get it.
+			$return_to = $site_url . '/login';
+		}
 
-		// Don't redirect to wp-login.php. adds relay state to login.
 		$this->auth->requireAuth(
 			[
-				'ReturnTo' => $site_url . $_SERVER["REQUEST_URI"],
+				'ReturnTo' => $return_to,
 				'KeepPost' => false,
 			]
 		);
