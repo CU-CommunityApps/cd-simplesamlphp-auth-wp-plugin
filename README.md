@@ -91,13 +91,13 @@ rm simplesamlphp-la
 
 ## Go Live
 
-Make sure your certs are on the live site, by going to SITE_URL/simplesaml/module.php/saml/sp/metadata.php/cornell?output=xhtml and verify the metadata matches the saml.cert file.
+- Make sure your certs are on the live site, by going to SITE_URL/simplesaml/module.php/saml/sp/metadata.php/cornell?output=xhtml and verify the metadata matches the saml.cert file.
 
-register your saml.cert metadata with Cornell IDM [https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page](https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page)
+- register your saml.cert metadata with Cornell IDM [https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page](https://confluence.cornell.edu/display/SHIBBOLETH/Shibboleth+at+Cornell+Page)
 
-Test authentication sources before enabling the plugin by going to SITE_URL/simplesaml/module.php/core/authenticate.php?as=cornell
+- Test authentication sources before enabling the plugin by going to SITE_URL/simplesaml/module.php/core/authenticate.php?as=cornell
 
-If you can login successfully using Test authentication cornell source then you can enable the plugin on the live site.
+- If you can login successfully using Test authentication cornell source then you can enable the plugin on the live site.
 
 ## Sites using this plugin.
 
